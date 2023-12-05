@@ -49,51 +49,40 @@ const createData = () => {
     }
 
     if (week.length > 0) {
-        week.push({week: weekIndex, days: week};)
+        week.push({week: weekIndex, days: week});
     }
     return weeks;
 }
-     
-const addCell = (existing, classString, value) => {
-    const result = /* html */ `
-        ${}
-
-        <td class="${classString}">
-            &nbsp;${value}&nbsp;
-        </td>
-    `
-
-    return result
-}
+  
+const createCell = (classString, value) => {
+    return `
+      <td class="${classString}">
+        ${value}
+      </td>
+    `;
+  };
 
 const createHtml = (data) => {
-    let result = ''
+    let result = '<td class="table__cell table__cell_sidebar">Week ${week}</td>'
 
-    for (const { week,  } of ) {
-        let inner = ""
-        inner = addCell(inner, 'table__cell table__cell_sidebar', `Week ${week}`)
-    
-         (const { dayOfWeek, value } of days) {
-            const isToday = new Date().getDate() === value
-            const isWeekend = dayOfWeek ===  | dayOfWeek === 
-            const isAlternate = week % 2 === 0
-            
-						let classString = 'table__cell'
+    for (const { daysOfWeek, value  } of days) {
+        const isToday = (new Date().getDate() === value) && (new Date().getMonth() === new Date().getMonth());
+      const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
 
-            if () classString = `${} table__cell_`
-            if () classString = `${} table__cell_`
-            if () classString = `${} table__cell_`
-            inner = addCell()
-        }
+      let classString = 'table__cell';
 
-        result = `
-            ${result}
-            <tr>${inner}</tr>
-        `
+      if (isToday) classString = `${classString} table__cell_today`;
+      if (isWeekend) classString = `${classString} table__cell_weekend`;
+
+      inner += createCell(classString, value !== undefined ? value : '');
     }
-    
-    return result
-}
+
+    result += `<tr>${inner}</tr>`;
+  }
+
+  result += '</tbody>';
+  return result;
+};
 
 // Only edit above
 
