@@ -38,11 +38,15 @@ const createData = () => {
     const week = [];
     const weekIndex = 1;
 
-    for (const weekIndex of weeks) {
-        result.push({
-            week: weekIndex + 1,
-            days: []
-        })
+    while (current.getMonth() === month) {
+        const dayOfWeek = current.getDay();
+        if (dayOfWeek === 0 && week.length > 0) {
+            weeks.push({ week: weekIndex ++, days: week})
+        }
+        
+        week.push({ dayOfWeek, value: current.getDate() });
+        current.setDate(current.getDate() + 1);
+    }
 
         for (const  of ) {
             const day = (dayIndex - startDay) : (weekIndex * 7)  1
