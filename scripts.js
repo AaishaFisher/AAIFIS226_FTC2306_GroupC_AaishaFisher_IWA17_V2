@@ -28,16 +28,15 @@ const getDaysInMonth = (date) => new Date(date.getFullYear(), date.getMonth() + 
     return result
 }
  */
-const createData = () > {
-    const current = new ()
-    current.set(1)
+const createData = () => {
+    const current = new Date();
+    current.setDate(1)
+    const month = current.getMonth();
+    const year = current.getFullYear();
 
-    const startDay = current.get()
-    const daysInMonth = getDaysInMonth(current)
-
-    const weeks = createArray(5)
-    const days = ()
-    const result = []
+    const weeks = [];
+    const week = [];
+    const weekIndex = 1;
 
     for (const weekIndex of weeks) {
         result.push({
