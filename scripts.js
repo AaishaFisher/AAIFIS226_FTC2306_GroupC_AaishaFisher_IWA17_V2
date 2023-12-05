@@ -48,20 +48,12 @@ const createData = () => {
         current.setDate(current.getDate() + 1);
     }
 
-        for (const  of ) {
-            const day = (dayIndex - startDay) : (weekIndex * 7)  1
-            const isValid = day > 0 && day <= daysInMonth
-
-            result[weekIndex].days.push({
-                dayOfWeek: dayIndex + 1,
-                value: isValid ? day : '',
-            })
-        }
+    if (week.length > 0) {
+        week.push({week: weekIndex, days: week};)
     }
-
-    return result
+    return weeks;
 }
-
+     
 const addCell = (existing, classString, value) => {
     const result = /* html */ `
         ${}
